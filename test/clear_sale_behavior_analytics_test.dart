@@ -4,12 +4,31 @@ import 'package:clear_sale_behavior_analytics/clear_sale_behavior_analytics_plat
 import 'package:clear_sale_behavior_analytics/clear_sale_behavior_analytics_method_channel.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
-class MockClearSaleBehaviorAnalyticsPlatform
-    with MockPlatformInterfaceMixin
-    implements ClearSaleBehaviorAnalyticsPlatform {
+class MockClearSaleBehaviorAnalyticsPlatform with MockPlatformInterfaceMixin implements ClearSaleBehaviorAnalyticsPlatform {
+  @override
+  Future<void> blockAppList() {
+    throw UnimplementedError();
+  }
 
   @override
-  Future<String?> getPlatformVersion() => Future.value('42');
+  Future<void> blockGeolocation() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<String?> collectInformation() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> start(String appId) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> stop() {
+    throw UnimplementedError();
+  }
 }
 
 void main() {
@@ -24,6 +43,6 @@ void main() {
     MockClearSaleBehaviorAnalyticsPlatform fakePlatform = MockClearSaleBehaviorAnalyticsPlatform();
     ClearSaleBehaviorAnalyticsPlatform.instance = fakePlatform;
 
-    expect(await clearSaleBehaviorAnalyticsPlugin.getPlatformVersion(), '42');
+    // expect(await clearSaleBehaviorAnalyticsPlugin.getPlatformVersion(), '42');
   });
 }
