@@ -1,7 +1,7 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'dart:async';
-
-import 'package:flutter/services.dart';
 import 'package:clear_sale_behavior_analytics/clear_sale_behavior_analytics.dart';
 
 void main() {
@@ -16,7 +16,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
   final _clearSaleBehaviorAnalyticsPlugin = ClearSaleBehaviorAnalytics();
 
   @override
@@ -25,22 +24,13 @@ class _MyAppState extends State<MyApp> {
     initPlatformState();
   }
 
-
   Future<void> initPlatformState() async {
-    String platformVersion;
-
-    try {
-      platformVersion =
-          await _clearSaleBehaviorAnalyticsPlugin.getPlatformVersion() ?? 'Unknown platform version';
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
-    }
-
-    if (!mounted) return;
-
-    setState(() {
-      _platformVersion = platformVersion;
-    });
+    await _clearSaleBehaviorAnalyticsPlugin.start('');
+    await _clearSaleBehaviorAnalyticsPlugin.blockAppList();
+    await _clearSaleBehaviorAnalyticsPlugin.blockGeolocation();
+    final sessionId = await _clearSaleBehaviorAnalyticsPlugin.collectInformation();
+    log('session ID: $sessionId');
+    await _clearSaleBehaviorAnalyticsPlugin.stop();
   }
 
   @override
@@ -49,9 +39,6 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Plugin example app'),
-        ),
-        body: Center(
-          child: Text('Running on: $_platformVersion\n'),
         ),
       ),
     );

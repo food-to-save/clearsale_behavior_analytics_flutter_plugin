@@ -16,7 +16,13 @@ abstract class ClearSaleBehaviorAnalyticsPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<String?> getPlatformVersion() {
-    throw UnimplementedError('platformVersion() has not been implemented.');
-  }
+  Future<void> start(String appId);
+
+  Future<void> stop();
+
+  Future<void> blockGeolocation();
+
+  Future<void> blockAppList();
+
+  Future<String?> collectInformation();
 }

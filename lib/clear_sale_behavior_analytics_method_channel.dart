@@ -8,8 +8,27 @@ class MethodChannelClearSaleBehaviorAnalytics extends ClearSaleBehaviorAnalytics
   final methodChannel = const MethodChannel('clear_sale_behavior_analytics');
 
   @override
-  Future<String?> getPlatformVersion() async {
-    final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
-    return version;
+  Future<void> start(String appId) async {
+    await methodChannel.invokeMethod<void>('start', <String, dynamic>{"appId": appId});
+  }
+
+  @override
+  Future<void> stop() async {
+    await methodChannel.invokeMethod<void>('stop');
+  }
+
+  @override
+  Future<void> blockAppList() async {
+    return methodChannel.invokeMethod<void>('blockAppList');
+  }
+
+  @override
+  Future<void> blockGeolocation() async {
+    return methodChannel.invokeMethod<void>('blockLocation');
+  }
+
+  @override
+  Future<String?> collectInformation() async {
+    return methodChannel.invokeMethod<String>('collectInformation');
   }
 }
