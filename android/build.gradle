@@ -50,11 +50,17 @@ android {
     }
 
     dependencies {
-        implementation 'com.google.android.gms:play-services-ads:20.6.0'
-        implementation 'sale.clear.behavior:sdk-behavior:5.6.4'
-        implementation 'sale.clear.behavior:sdk-behavior:3.0.2'
-        implementation files('C:/Users/rully/Documents/flutter/bin/cache/artifacts/engine/android-arm64-release/flutter.jar')
+        // TODO: this line is for enable flutter classes auto complete when develop flutter plugins
+        //implementation files('C:/Users/yourUser/flutterPath/bin/cache/artifacts/engine/android-arm64-release/flutter.jar')
+
+        // gms
+        implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
         api 'com.google.android.gms:play-services-location:19.0.1'
+
+        // clear sale
+        implementation 'sale.clear.behavior:sdk-behavior:5.6.4'
+
+        // test
         testImplementation 'org.jetbrains.kotlin:kotlin-test'
         testImplementation 'org.mockito:mockito-core:5.0.0'
     }

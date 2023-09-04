@@ -21,13 +21,15 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    initPlatformState();
+    //initPlatformState();
   }
 
   Future<void> initPlatformState() async {
-    await _clearSaleBehaviorAnalyticsPlugin.start('');
     await _clearSaleBehaviorAnalyticsPlugin.blockAppList();
     await _clearSaleBehaviorAnalyticsPlugin.blockGeolocation();
+
+    await _clearSaleBehaviorAnalyticsPlugin.start('');
+
     final sessionId = await _clearSaleBehaviorAnalyticsPlugin.collectInformation();
     log('session ID: $sessionId');
     await _clearSaleBehaviorAnalyticsPlugin.stop();
@@ -37,6 +39,11 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            initPlatformState();
+          },
+        ),
         appBar: AppBar(
           title: const Text('Plugin example app'),
         ),
