@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -25,14 +26,19 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> initPlatformState() async {
-    await _clearSaleBehaviorAnalyticsPlugin.blockAppList();
-    await _clearSaleBehaviorAnalyticsPlugin.blockGeolocation();
-
     await _clearSaleBehaviorAnalyticsPlugin.start('');
+
+    if (Platform.isAndroid) {
+      await _clearSaleBehaviorAnalyticsPlugin.blockAppList();
+      await _clearSaleBehaviorAnalyticsPlugin.blockGeolocation();
+    }
 
     final sessionId = await _clearSaleBehaviorAnalyticsPlugin.collectInformation();
     log('session ID: $sessionId');
-    await _clearSaleBehaviorAnalyticsPlugin.stop();
+
+    if (Platform.isAndroid) {
+      await _clearSaleBehaviorAnalyticsPlugin.stop();
+    }
   }
 
   @override
