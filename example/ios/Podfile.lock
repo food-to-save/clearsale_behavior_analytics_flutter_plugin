@@ -1,0 +1,35 @@
+PODS:
+  - clear_sale_behavior_analytics (0.0.1):
+    - CSBehavior (= 3.0.1)
+    - Flutter
+  - CSBehavior (3.0.1)
+  - Flutter (1.0.0)
+  - integration_test (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - clear_sale_behavior_analytics (from `.symlinks/plugins/clear_sale_behavior_analytics/ios`)
+  - Flutter (from `Flutter`)
+  - integration_test (from `.symlinks/plugins/integration_test/ios`)
+
+SPEC REPOS:
+  https://dev.azure.com/PublicPackagesCS/Behavior/_git/BehaviorAnalytics.SDK.IOS.Specs:
+    - CSBehavior
+
+EXTERNAL SOURCES:
+  clear_sale_behavior_analytics:
+    :path: ".symlinks/plugins/clear_sale_behavior_analytics/ios"
+  Flutter:
+    :path: Flutter
+  integration_test:
+    :path: ".symlinks/plugins/integration_test/ios"
+
+SPEC CHECKSUMS:
+  clear_sale_behavior_analytics: d7cf920e430074b5663ba68a6fb2aedcc44c5ab1
+  CSBehavior: 2329818ab396724b0b91362c7abced5a6a849deb
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  integration_test: 13825b8a9334a850581300559b8839134b124670
+
+PODFILE CHECKSUM: 8fa1f6ce1729e056dceac0af05860772ca99a41a
+
+COCOAPODS: 1.12.1
