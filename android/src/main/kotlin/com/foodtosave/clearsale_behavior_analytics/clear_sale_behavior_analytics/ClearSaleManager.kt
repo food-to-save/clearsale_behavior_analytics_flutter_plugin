@@ -8,11 +8,28 @@ class ClearSaleManager(private val context: Context) {
 
     private var started = false
 
-    fun blockGeolocation() = behavior.blockLocation()
 
-    fun blockAppList() = behavior.blockAppsList()
+    private fun throwIfIsNotStarted() {
+        if(!started) {
+            throw IllegalStateException("you should call start before this method")
+        }
+    }
 
-    fun start(appId: String) {
+    fun blockGeolocation() {
+        throwIfIsNotStarted()
+        behavior.blockLocation()
+    }
+
+    fun blockAppList() {
+        throwIfIsNotStarted()
+        behavior.blockAppsList()
+    }
+
+    fun start(appId: String?) {
+
+        if(appId == null) {
+            throw IllegalStateException("appId must be non null")
+        }
 
         if(started) {
             return
@@ -23,11 +40,16 @@ class ClearSaleManager(private val context: Context) {
         behavior.start()
     }
 
-    fun collectInformation (): String {
+    fun collectInformation (): String? {
+        throwIfIsNotStarted()
+
         val sessionId = behavior.generateSessionID()
         behavior.collectDeviceInformation(sessionId)
         return sessionId
     }
 
-    fun stop() = behavior.stop()
+    fun stop() {
+        throwIfIsNotStarted()
+        behavior.stop()
+    }
 }

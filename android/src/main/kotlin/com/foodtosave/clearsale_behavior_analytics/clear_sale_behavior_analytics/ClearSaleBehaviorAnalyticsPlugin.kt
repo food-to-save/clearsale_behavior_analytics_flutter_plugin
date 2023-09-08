@@ -22,12 +22,6 @@ class ClearSaleBehaviorAnalyticsPlugin: FlutterPlugin, ActivityAware, MethodCall
 
   private  fun handleStart(call: MethodCall, result: Result) {
      val appId = call.argument<String>("appId")
-
-    if(appId == null) {
-      result.error("0", "appId must be not null", null)
-      return
-    }
-
      clearSaleManager?.start(appId)
      result.success(null)
   }
@@ -63,7 +57,7 @@ class ClearSaleBehaviorAnalyticsPlugin: FlutterPlugin, ActivityAware, MethodCall
         "collectInformation" -> handleCollectInformation(result)
       }
     }catch (ex: Exception) {
-      result.error("", "", ex)
+      result.error("", ex.message, ex)
     }
   }
 
