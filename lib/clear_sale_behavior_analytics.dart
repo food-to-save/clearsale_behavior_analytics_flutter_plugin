@@ -4,9 +4,6 @@ import 'clear_sale_behavior_analytics_platform_interface.dart';
 
 class ClearSaleBehaviorAnalytics {
   Future<void> start(String appId) async {
-    if (Platform.isIOS) {
-      return;
-    }
     return ClearSaleBehaviorAnalyticsPlatform.instance.start(appId);
   }
 
