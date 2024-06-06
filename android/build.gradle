@@ -1,23 +1,26 @@
-group 'com.foodtosave.clearsale_behavior_analytics.clear_sale_behavior_analytics'
-version '1.0-SNAPSHOT'
+group 'com.clearsale.behavior.behavior_analytics_flutter_sdk'
+version '1.0'
 
 buildscript {
-    ext.kotlin_version = '1.7.10'
     repositories {
         google()
-        mavenCentral()
+        jcenter()
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.3.0'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.android.tools.build:gradle:4.1.0'
     }
 }
 
-allprojects {
+rootProject.allprojects {
     repositories {
         google()
-        mavenCentral()
+        jcenter()
+
         maven {
             url 'https://pkgs.dev.azure.com/PublicPackagesCS/Behavior/_packaging/BehaviorAnalytics.SDK/maven/v1'
             name 'BehaviorAnalytics.SDK.Android'
@@ -26,54 +29,17 @@ allprojects {
 }
 
 apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 31
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
-
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
-        test.java.srcDirs += 'src/test/kotlin'
-    }
+    compileSdkVersion 30
 
     defaultConfig {
         minSdkVersion 16
     }
+}
 
-    dependencies {
-        // TODO: this line is for enable flutter classes auto complete when develop flutter plugins
-        //implementation files('C:/Users/yourUser/flutterPath/bin/cache/artifacts/engine/android-arm64-release/flutter.jar')
-
-        // gms
-        implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
-        api 'com.google.android.gms:play-services-location:19.0.1'
-
-        // clear sale
-        implementation 'sale.clear.behavior:sdk-behavior:5.6.4'
-
-        // test
-        testImplementation 'org.jetbrains.kotlin:kotlin-test'
-        testImplementation 'org.mockito:mockito-core:5.0.0'
-    }
-
-    testOptions {
-        unitTests.all {
-            useJUnitPlatform()
-
-            testLogging {
-               events "passed", "skipped", "failed", "standardOut", "standardError"
-               outputs.upToDateWhen {false}
-               showStandardStreams = true
-            }
-        }
-    }
+dependencies {
+    implementation 'sale.clear.behavior:sdk-behavior:6.0.4'
+    implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
+    implementation 'com.google.android.gms:play-services-location:21.0.1'
 }
