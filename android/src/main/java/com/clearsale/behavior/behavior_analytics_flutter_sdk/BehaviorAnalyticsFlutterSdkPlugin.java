@@ -19,8 +19,6 @@ import io.flutter.plugin.common.MethodChannel.Result;
 import sale.clear.behavior.android.exceptions.CaptureWasStartedException;
 import sale.clear.behavior.android.exceptions.SessionIDAlreadyUsedException;
 
-import sale.clear.behavior.android.events.UserEventType;
-
 /** BehaviorAnalyticsFlutterSdkPlugin */
 public class BehaviorAnalyticsFlutterSdkPlugin implements FlutterPlugin, MethodCallHandler, ActivityAware {
   /// The MethodChannel that will the communication between Flutter and native Android
@@ -62,28 +60,19 @@ public class BehaviorAnalyticsFlutterSdkPlugin implements FlutterPlugin, MethodC
       }
       
     }
+    else if(call.method.equals("stop")){
+      behaviorInstance.stop();
+      result.success(null);
+    }
     else if(call.method.equals("collectDeviceInformation")) {
       try{
         ArrayList arguments = (ArrayList) call.arguments;
         String sessionID = (String)arguments.get(0);
         behaviorInstance.collectDeviceInformation(sessionID);
-        behaviorInstance.stop();
         result.success(null);
       }
       catch (Exception ex){
         result.error("30", ex.getMessage(), ex.getStackTrace());
-      }
-    }
-    else if(call.method.equals("sendEvent")){
-      try{
-        ArrayList arguments = (ArrayList) call.arguments;
-        UserEventType userEvent = UserEventType.valueOf(arguments.get(0).toString());
-        String sessionID = (String)arguments.get(1);
-        behaviorInstance.sendEvent(userEvent, sessionID);
-        result.success(null);
-      }
-      catch (Exception ex){
-        result.error("40", ex.getMessage(), ex.getStackTrace());
       }
     }
     else {

@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'package:flutter/services.dart';
 
-import 'events/user_event_type.dart';
-
 class BehaviorAnalyticsFlutterSdk {
   static const MethodChannel _channel =
       const MethodChannel('behavior_analytics_flutter_sdk');
@@ -18,9 +16,5 @@ class BehaviorAnalyticsFlutterSdk {
 
   static Future<void> collectDeviceInformation(String sessionID) async {
     await _channel.invokeMethod('collectDeviceInformation', [sessionID]);
-  }
-
-  static Future<void> sendEvent(UserEventType eventType, String sessionID) async {
-    await _channel.invokeMethod('sendEvent', [eventType.name, sessionID]);
   }
 }
