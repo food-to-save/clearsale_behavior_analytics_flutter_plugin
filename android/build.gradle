@@ -31,6 +31,8 @@ rootProject.allprojects {
 apply plugin: 'com.android.library'
 
 android {
+    namespace "com.foodtosave.foodtosave"
+    testNamespace "com.foodtosave.apptest"
     compileSdkVersion 30
 
     defaultConfig {
