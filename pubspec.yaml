@@ -1,6 +1,6 @@
 name: behavior_analytics_flutter_sdk
 description: A new flutter plugin project.
-version: 0.4.9
+version: 0.6.1
 homepage: clear.sale
 
 environment:

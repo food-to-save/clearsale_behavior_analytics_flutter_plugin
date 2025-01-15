@@ -12,7 +12,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.0'
+        classpath 'com.android.tools.build:gradle:8.7.1'
     }
 }
 
@@ -33,15 +33,15 @@ apply plugin: 'com.android.library'
 android {
     namespace "com.clearsale.behavior.behavior_analytics_flutter_sdk"
     
-    compileSdkVersion 30
+    compileSdkVersion 34
 
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 23
     }
 }
 
 dependencies {
-    implementation 'sale.clear.behavior:sdk-behavior:5.6.7'
+    implementation 'sale.clear.behavior:sdk-behavior:6.0.4'
     implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
     implementation 'com.google.android.gms:play-services-location:21.0.1'
 }
