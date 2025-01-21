@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'behavior_analytics_flutter_sdk'
-  s.version          = '0.0.1'
+  s.version          = '5.0.0'
   s.summary          = 'Clearsale fingerprint integration'
   s.description      = <<-DESC
 Clearsale fingerprint integration
