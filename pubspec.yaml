@@ -1,11 +1,11 @@
 name: behavior_analytics_flutter_sdk
-description: A new flutter plugin project.
+description: O plugin FingerPrint para Flutter é uma poderosa ferramenta anti-fraude, que realiza a identificação de dispositivos, respeitando as políticas de privacidade do usuário.
 version: 0.6.1
-homepage: clear.sale
+homepage: https://clear.sale
 
 environment:
-  sdk: ">=3.0.0 <4.0.0"
-  flutter: 3.24.3
+  sdk: '>=2.17.0 <4.0.0'
+  flutter: ">=1.20.0"
 
 dependencies:
   flutter:
@@ -29,7 +29,7 @@ flutter:
       android:
         package: com.clearsale.behavior.behavior_analytics_flutter_sdk
         pluginClass: BehaviorAnalyticsFlutterSdkPlugin
-      ios: 
+      ios:
         pluginClass: SwiftClearsaleFingerprintPlugin
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
