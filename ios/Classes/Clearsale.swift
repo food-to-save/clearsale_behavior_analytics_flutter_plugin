@@ -3,11 +3,12 @@
 //
 
 import CSBehavior
+import CSBehavior.CSBUserEventType
 
 public class Clearsale {
     private var mInstance: CSBehavior;
 
-    init(appkey: String?){
+    init(appkey: String?) {
         mInstance = CSBehavior.getInstance(appkey);
     }
 
@@ -15,7 +16,15 @@ public class Clearsale {
         return mInstance.generateSessionId();
     }
 
-    public func collectDeviceInformation(sessionId: String){
-        mInstance.collectDeviceInformation(sessionId);
+    public func collectDeviceInformation(sessionId: String) async {
+        await mInstance.collectDeviceInformation(sessionId);
+    }
+
+    public func sendEvent(userEventType: CSBUserEventType, sessionId: String) async {
+        await mInstance.sendEvent(userEventType, sessionId);
+    }
+
+    public func allowSecurity() async {
+        // await mInstance.allowSecurity();
     }
 }
