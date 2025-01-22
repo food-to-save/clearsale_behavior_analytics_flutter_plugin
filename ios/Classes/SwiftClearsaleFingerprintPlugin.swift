@@ -31,7 +31,7 @@ public class SwiftClearsaleFingerprintPlugin: NSObject, FlutterPlugin {
             if(sessionId.isEmpty){
                 result("Error: sessionId is empty");
             } else{
-                clearsale?.collectDeviceInformation(sessionId: sessionId)
+                await clearsale?.collectDeviceInformation(sessionId: sessionId)
             }
             result("Collected device information with sessionId: " + sessionId )
         default:
