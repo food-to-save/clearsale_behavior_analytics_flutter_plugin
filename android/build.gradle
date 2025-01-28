@@ -41,7 +41,7 @@ android {
 }
 
 dependencies {
-    implementation 'sale.clear.behavior:sdk-behavior:6.0.8'
+    implementation 'sale.clear.behavior:sdk-behavior:6.0.4'
     implementation 'com.google.android.gms:play-services-ads-identifier:18.0.1'
     implementation 'com.google.android.gms:play-services-location:21.0.1'
 }
