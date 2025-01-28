@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'behavior_analytics_flutter_sdk'
-  s.version          = '0.6.1'
+  s.version          = '0.5.13'
   s.summary          = 'Clearsale fingerprint integration'
   s.description      = <<-DESC
 Clearsale fingerprint integration
@@ -16,7 +16,7 @@ Clearsale fingerprint integration
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
   s.platform = :ios, '9.0'
-  s.dependency 'CSBehavior', '5.0.1'
+  s.dependency 'CSBehavior', '5.0.0'
   s.static_framework = true
 
   # Flutter.framework does not contain a i386 slice.
