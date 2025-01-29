@@ -16,7 +16,7 @@ Clearsale fingerprint integration
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
   s.platform = :ios, '12.0'
-  s.dependency 'CSBehavior', '5.0.0'
+  s.dependency 'CSBehavior', '4.0.10'
   s.static_framework = true
 
   # Flutter.framework does not contain a i386 slice.
